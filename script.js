@@ -39,17 +39,19 @@ floor.rotation.x = -Math.PI / 2;
 floor.receiveShadow = true;
 scene.add(floor);
 
-const wallMaterial = new THREE.MeshPhongMaterial({ color: 0xfdfdfd, side: THREE.DoubleSide });
-const backWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial);
+const wallMaterial1 = new THREE.MeshPhongMaterial({ color: 0x83ebd1, side: THREE.DoubleSide });
+const backWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial1);
 backWall.position.set(0, 7.5, -15);
 scene.add(backWall);
 
-const leftWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial);
+const wallMaterial2 = new THREE.MeshPhongMaterial({ color: 0x83ebd1, side: THREE.DoubleSide });
+const leftWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial2);
 leftWall.rotation.y = Math.PI / 2;
 leftWall.position.set(-15, 7.5, 0);
 scene.add(leftWall);
 
-const rightWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial);
+const wallMaterial3 = new THREE.MeshPhongMaterial({ color: 0x83ebd1, side: THREE.DoubleSide });
+const rightWall = new THREE.Mesh(new THREE.PlaneGeometry(30, 15), wallMaterial3);
 rightWall.rotation.y = -Math.PI / 2;
 rightWall.position.set(15, 7.5, 0);
 scene.add(rightWall);
@@ -197,6 +199,33 @@ chairLegPositions.forEach(pos => {
   scene.add(leg);
 });
 
+// Bed
+const bedFrameMaterial = new THREE.MeshPhongMaterial({ color: 0x8b4513 }); 
+const bedFrame = new THREE.Mesh(new THREE.BoxGeometry(6, 1, 3), bedFrameMaterial);
+bedFrame.position.set(-10, 0.5, 5);
+bedFrame.castShadow = true;
+bedFrame.receiveShadow = true;
+scene.add(bedFrame);
+
+const mattressMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+const mattress = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.6, 2.8), mattressMaterial);
+mattress.position.set(-10, 1.1, 5);
+mattress.castShadow = true;
+scene.add(mattress);
+
+const pillowMaterial = new THREE.MeshPhongMaterial({ color: 0xf0f8ff });
+const pillow = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 2), pillowMaterial);
+pillow.position.set(-12, 1.4, 5);
+pillow.castShadow = true;
+scene.add(pillow);
+
+// Blanket
+const blanketMaterial = new THREE.MeshPhongMaterial({ color: 0xff6347 });
+const blanket = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.2, 2.8), blanketMaterial);
+blanket.position.set(-10, 1.3, 5);
+blanket.castShadow = true;
+scene.add(blanket);
+
 // Chair armrests
 const armrestGeom = new THREE.BoxGeometry(0.2, 0.8, 2);
 const leftArmrest = new THREE.Mesh(armrestGeom, chairSeat.material);
@@ -217,10 +246,17 @@ scene.add(fridgeDoor);
 
 const windowGlass = new THREE.Mesh(
   new THREE.PlaneGeometry(8, 6),
-  new THREE.MeshPhongMaterial({ color: 0x87ceeb, transparent: true, opacity: 0.5 })
+  new THREE.MeshPhongMaterial({ color: 0xfcfcfc, transparent: true, opacity: 0.5 })
 );
-windowGlass.position.set(0, 6, -14.9);
+windowGlass.position.set(-7, 8, -14.9);
 scene.add(windowGlass);
+
+const windowGlass2 = new THREE.Mesh(
+  new THREE.PlaneGeometry(8, 6),
+  new THREE.MeshPhongMaterial({ color: 0xfcfcfc, transparent: true, opacity: 0.5 })
+);
+windowGlass2.position.set(7, 8, -14.9);
+scene.add(windowGlass2);
 
 for (let i = -3; i <= 3; i++) {
   const bar = new THREE.Mesh(new THREE.BoxGeometry(0.1, 3, 0.1), new THREE.MeshPhongMaterial({ color: 0x333333 }));
