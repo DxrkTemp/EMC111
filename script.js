@@ -144,7 +144,6 @@ for (let i = -1; i <= 1; i += 2) {
   }
 }
 
-// Monitor + Stand
 const monitor = new THREE.Mesh(
   new THREE.BoxGeometry(2, 1.5, 0.1),
   new THREE.MeshPhongMaterial({ color: 0x000000 })
@@ -160,7 +159,6 @@ const monitorStand = new THREE.Mesh(
 monitorStand.position.set(-10, 3.8, -6);
 scene.add(monitorStand);
 
-// Keyboard
 const keyboard = new THREE.Mesh(
   new THREE.BoxGeometry(2.5, 0.1, 0.8),
   new THREE.MeshPhongMaterial({ color: 0x222222 })
@@ -168,7 +166,6 @@ const keyboard = new THREE.Mesh(
 keyboard.position.set(-10, 3.3, -4.5);
 scene.add(keyboard);
 
-// Mouse
 const mouse = new THREE.Mesh(
   new THREE.BoxGeometry(0.4, 0.1, 0.6),
   new THREE.MeshPhongMaterial({ color: 0x111111 })
@@ -176,7 +173,6 @@ const mouse = new THREE.Mesh(
 mouse.position.set(-7.5, 3.3, -4.5);
 scene.add(mouse);
 
-// Chair facing desk
 const chairSeat = new THREE.Mesh(new THREE.BoxGeometry(2, 0.3, 2), new THREE.MeshPhongMaterial({ color: 0x2f4f4f }));
 chairSeat.position.set(-10, 1.5, -1);
 chairSeat.rotation.y = Math.PI;
@@ -187,7 +183,6 @@ chairBack.position.set(-10, 2.5, -0.1);
 chairBack.rotation.y = Math.PI;
 scene.add(chairBack);
 
-// Chair legs
 const chairLegGeom = new THREE.CylinderGeometry(0.1, 0.1, 1.5, 16);
 const chairLegPositions = [
   [-11, 0.75, -2], [-9, 0.75, -2],
@@ -199,7 +194,6 @@ chairLegPositions.forEach(pos => {
   scene.add(leg);
 });
 
-// Bed
 const bedFrameMaterial = new THREE.MeshPhongMaterial({ color: 0x8b4513 }); 
 const bedFrame = new THREE.Mesh(new THREE.BoxGeometry(6, 1, 3), bedFrameMaterial);
 bedFrame.position.set(-10, 0.5, 5);
@@ -219,14 +213,12 @@ pillow.position.set(-12, 1.4, 5);
 pillow.castShadow = true;
 scene.add(pillow);
 
-// Blanket
 const blanketMaterial = new THREE.MeshPhongMaterial({ color: 0xff6347 });
 const blanket = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.2, 2.8), blanketMaterial);
 blanket.position.set(-10, 1.3, 5);
 blanket.castShadow = true;
 scene.add(blanket);
 
-// Chair armrests
 const armrestGeom = new THREE.BoxGeometry(0.2, 0.8, 2);
 const leftArmrest = new THREE.Mesh(armrestGeom, chairSeat.material);
 leftArmrest.position.set(-11, 2, -1);
