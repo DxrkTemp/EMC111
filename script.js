@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 10, 25);
+camera.position.set(0, 10, 20);
 camera.lookAt(0, 4, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -147,7 +147,7 @@ const monitor = new THREE.Mesh(
   new THREE.BoxGeometry(2, 1.5, 0.1),
   new THREE.MeshPhongMaterial({ color: 0x000000 })
 );
-monitor.position.set(-10, 4.5, -4.4);
+monitor.position.set(-10, 4.5, -5.5);
 monitor.rotation.y = Math.PI;
 scene.add(monitor);
 
@@ -155,8 +155,24 @@ const monitorStand = new THREE.Mesh(
   new THREE.CylinderGeometry(0.1, 0.1, 1, 16),
   new THREE.MeshPhongMaterial({ color: 0x333333 })
 );
-monitorStand.position.set(-10, 3.8, -5);
+monitorStand.position.set(-10, 3.8, -6);
 scene.add(monitorStand);
+
+// Keyboard
+const keyboard = new THREE.Mesh(
+  new THREE.BoxGeometry(2.5, 0.1, 0.8),
+  new THREE.MeshPhongMaterial({ color: 0x222222 })
+);
+keyboard.position.set(-10, 3.3, -4.5);
+scene.add(keyboard);
+
+// Mouse
+const mouse = new THREE.Mesh(
+  new THREE.BoxGeometry(0.4, 0.1, 0.6),
+  new THREE.MeshPhongMaterial({ color: 0x111111 })
+);
+mouse.position.set(-7.5, 3.3, -4.5);
+scene.add(mouse);
 
 // Chair facing desk
 const chairSeat = new THREE.Mesh(new THREE.BoxGeometry(2, 0.3, 2), new THREE.MeshPhongMaterial({ color: 0x2f4f4f }));
@@ -168,6 +184,28 @@ const chairBack = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 0.2), chairSeat.mat
 chairBack.position.set(-10, 2.5, -0.1);
 chairBack.rotation.y = Math.PI;
 scene.add(chairBack);
+
+// Chair legs
+const chairLegGeom = new THREE.CylinderGeometry(0.1, 0.1, 1.5, 16);
+const chairLegPositions = [
+  [-11, 0.75, -2], [-9, 0.75, -2],
+  [-11, 0.75, 0],  [-9, 0.75, 0]
+];
+chairLegPositions.forEach(pos => {
+  const leg = new THREE.Mesh(chairLegGeom, new THREE.MeshPhongMaterial({ color: 0x333333 }));
+  leg.position.set(...pos);
+  scene.add(leg);
+});
+
+// Chair armrests
+const armrestGeom = new THREE.BoxGeometry(0.2, 0.8, 2);
+const leftArmrest = new THREE.Mesh(armrestGeom, chairSeat.material);
+leftArmrest.position.set(-11, 2, -1);
+scene.add(leftArmrest);
+
+const rightArmrest = leftArmrest.clone();
+rightArmrest.position.set(-9, 2, -1);
+scene.add(rightArmrest);
 
 const fridge = new THREE.Mesh(new THREE.BoxGeometry(3, 7, 2.5), new THREE.MeshPhongMaterial({ color: 0xdcdcdc }));
 fridge.position.set(12, 3.5, -5);
